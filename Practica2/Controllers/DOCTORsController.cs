@@ -17,7 +17,15 @@ namespace Practica2.Controllers
         // GET: DOCTORs
         public ActionResult Index()
         {
-            return View(db.DOCTOR.ToList());
+            return View(db.DOCTOR);
+        }
+
+        public ActionResult Especialidad(int? id)
+        {
+            var eSPECIALIDAD_DOCTOR = db.ESPECIALIDAD_DOCTOR.Include(e => e.DOCTOR).Include(e => e.ESPECIALIDAD).Where(
+                e => e.idDoctor == id);
+            return View(eSPECIALIDAD_DOCTOR.ToList());
+
         }
 
         // GET: DOCTORs/Details/5

@@ -184,8 +184,8 @@
     <Content Include="img\portada.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -249,6 +249,7 @@
     <Content Include="Views\PACIENTEs\Details.cshtml" />
     <Content Include="Views\PACIENTEs\Edit.cshtml" />
     <Content Include="Views\PACIENTEs\Index.cshtml" />
+    <Content Include="Views\DOCTORs\Especialidad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

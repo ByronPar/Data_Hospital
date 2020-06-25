@@ -1,0 +1,42 @@
+﻿@model  IEnumerable<Practica2.Models.ESPECIALIDAD_DOCTOR>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Especialidades</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            DPI
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Especialidades
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOCTOR.dpi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOCTOR.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESPECIALIDAD.nombre)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+<p>
+</p>

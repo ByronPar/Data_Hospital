@@ -15,8 +15,8 @@ namespace Practica2.Models
     public partial class CITA
     {
         public int id { get; set; }
-        public int idPaciente { get; set; }
-        public int idDoctor { get; set; }
+        public long idPaciente { get; set; }
+        public long idDoctor { get; set; }
         public System.DateTime fecha { get; set; }
         public string motivoCita { get; set; }
         public float costo { get; set; }

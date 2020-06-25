@@ -5,27 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Citas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Asingnar Nueva Cita", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha)
+            Fecha Programada
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.motivoCita)
+            Motivo de Cita
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.costo)
+            Costo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DOCTOR.nombre)
+            Nombre Doctor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PACIENTE.nombre)
+            Nombre Paciente
         </th>
         <th></th>
     </tr>
@@ -45,12 +45,7 @@
             @Html.DisplayFor(modelItem => item.DOCTOR.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PACIENTE.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.DisplayFor(modelItem => item.PACIENTE.nombre)  @Html.DisplayFor(modelItem => item.PACIENTE.apellido)
         </td>
     </tr>
 }

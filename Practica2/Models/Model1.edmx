@@ -9,9 +9,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="idPaciente" Type="int" Nullable="false" />
-          <Property Name="idDoctor" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPaciente" Type="bigint" Nullable="false" />
+          <Property Name="idDoctor" Type="bigint" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="motivoCita" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="costo" Type="real" Nullable="false" />
@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="dpi" />
           </Key>
-          <Property Name="dpi" Type="int" Nullable="false" />
+          <Property Name="dpi" Type="bigint" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="60" />
           <Property Name="telefono" Type="int" Nullable="false" />
@@ -38,15 +38,15 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idEspecialidad" Type="int" Nullable="false" />
-          <Property Name="idDoctor" Type="int" Nullable="false" />
+          <Property Name="idDoctor" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="PACIENTE">
           <Key>
             <PropertyRef Name="dpi" />
           </Key>
-          <Property Name="dpi" Type="int" Nullable="false" />
+          <Property Name="dpi" Type="bigint" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="60" />
@@ -144,9 +144,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="idPaciente" Type="Int32" Nullable="false" />
-          <Property Name="idDoctor" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPaciente" Type="Int64" Nullable="false" />
+          <Property Name="idDoctor" Type="Int64" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="motivoCita" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="costo" Type="Single" Nullable="false" />
@@ -157,7 +157,7 @@
           <Key>
             <PropertyRef Name="dpi" />
           </Key>
-          <Property Name="dpi" Type="Int32" Nullable="false" />
+          <Property Name="dpi" Type="Int64" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="Int32" Nullable="false" />
@@ -178,9 +178,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idEspecialidad" Type="Int32" Nullable="false" />
-          <Property Name="idDoctor" Type="Int32" Nullable="false" />
+          <Property Name="idDoctor" Type="Int64" Nullable="false" />
           <NavigationProperty Name="DOCTOR" Relationship="Self.FK_DoctorEspecialidad" FromRole="ESPECIALIDAD_DOCTOR" ToRole="DOCTOR" />
           <NavigationProperty Name="ESPECIALIDAD" Relationship="Self.FK_EspecialidadDoctor" FromRole="ESPECIALIDAD_DOCTOR" ToRole="ESPECIALIDAD" />
         </EntityType>
@@ -188,7 +188,7 @@
           <Key>
             <PropertyRef Name="dpi" />
           </Key>
-          <Property Name="dpi" Type="Int32" Nullable="false" />
+          <Property Name="dpi" Type="Int64" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />

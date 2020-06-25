@@ -7,52 +7,61 @@
 
 <h2>Doctores</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo Doctor", "Create")
-</p>
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Crear Nuevo Doctor", "Create")</li>
+    <li>@Html.ActionLink("Doctores por Especialidad", "Index", "PACIENTEs")</li>
+</ul>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            DPI
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.direccion)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.telefono)
+            Dirección
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.puesto)
+            Telefono
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sueldo)
+            Puesto
+        </th>
+        <th>
+            Sueldo
+        </th>
+        <th>
+            Especialidad
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.puesto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sueldo)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.dpi }) |
-            @Html.ActionLink("Información", "Details", new { id = item.dpi })|
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.dpi })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.dpi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.direccion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.telefono)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.puesto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.sueldo)
+    </td>
+    <td>
+        @Html.ActionLink("Especialidad", "Especialidad", new { id = item.dpi })
+    </td>
+</tr>
 }
 
 </table>

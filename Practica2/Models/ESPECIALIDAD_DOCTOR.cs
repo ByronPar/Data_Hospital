@@ -16,7 +16,7 @@ namespace Practica2.Models
     {
         public int id { get; set; }
         public int idEspecialidad { get; set; }
-        public int idDoctor { get; set; }
+        public long idDoctor { get; set; }
     
         public virtual DOCTOR DOCTOR { get; set; }
         public virtual ESPECIALIDAD ESPECIALIDAD { get; set; }

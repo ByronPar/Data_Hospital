@@ -20,7 +20,7 @@ namespace Practica2.Models
             this.CITA = new HashSet<CITA>();
         }
     
-        public int dpi { get; set; }
+        public long dpi { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string direccion { get; set; }
