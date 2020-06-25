@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HOSPITAL_DATOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CITA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idPaciente" Type="int" Nullable="false" />
+          <Property Name="idDoctor" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="motivoCita" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="costo" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="dpi" />
+          </Key>
+          <Property Name="dpi" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="60" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="puesto" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="sueldo" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESPECIALIDAD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESPECIALIDAD_DOCTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idEspecialidad" Type="int" Nullable="false" />
+          <Property Name="idDoctor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PACIENTE">
+          <Key>
+            <PropertyRef Name="dpi" />
+          </Key>
+          <Property Name="dpi" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="60" />
+          <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="fechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CitaDoctor">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+          <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="dpi" />
+            </Principal>
+            <Dependent Role="CITA">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitaPaciente">
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+          <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACIENTE">
+              <PropertyRef Name="dpi" />
+            </Principal>
+            <Dependent Role="CITA">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorEspecialidad">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+          <End Role="ESPECIALIDAD_DOCTOR" Type="Self.ESPECIALIDAD_DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="dpi" />
+            </Principal>
+            <Dependent Role="ESPECIALIDAD_DOCTOR">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspecialidadDoctor">
+          <End Role="ESPECIALIDAD" Type="Self.ESPECIALIDAD" Multiplicity="1" />
+          <End Role="ESPECIALIDAD_DOCTOR" Type="Self.ESPECIALIDAD_DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESPECIALIDAD">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ESPECIALIDAD_DOCTOR">
+              <PropertyRef Name="idEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HOSPITAL_DATOSModelStoreContainer">
+          <EntitySet Name="CITA" EntityType="Self.CITA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESPECIALIDAD" EntityType="Self.ESPECIALIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESPECIALIDAD_DOCTOR" EntityType="Self.ESPECIALIDAD_DOCTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CitaDoctor" Association="Self.FK_CitaDoctor">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="CITA" EntitySet="CITA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitaPaciente" Association="Self.FK_CitaPaciente">
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+            <End Role="CITA" EntitySet="CITA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorEspecialidad" Association="Self.FK_DoctorEspecialidad">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="ESPECIALIDAD_DOCTOR" EntitySet="ESPECIALIDAD_DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspecialidadDoctor" Association="Self.FK_EspecialidadDoctor">
+            <End Role="ESPECIALIDAD" EntitySet="ESPECIALIDAD" />
+            <End Role="ESPECIALIDAD_DOCTOR" EntitySet="ESPECIALIDAD_DOCTOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HOSPITAL_DATOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CITA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idPaciente" Type="Int32" Nullable="false" />
+          <Property Name="idDoctor" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="motivoCita" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="costo" Type="Single" Nullable="false" />
+          <NavigationProperty Name="DOCTOR" Relationship="Self.FK_CitaDoctor" FromRole="CITA" ToRole="DOCTOR" />
+          <NavigationProperty Name="PACIENTE" Relationship="Self.FK_CitaPaciente" FromRole="CITA" ToRole="PACIENTE" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="dpi" />
+          </Key>
+          <Property Name="dpi" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="puesto" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sueldo" Type="Single" Nullable="false" />
+          <NavigationProperty Name="CITA" Relationship="Self.FK_CitaDoctor" FromRole="DOCTOR" ToRole="CITA" />
+          <NavigationProperty Name="ESPECIALIDAD_DOCTOR" Relationship="Self.FK_DoctorEspecialidad" FromRole="DOCTOR" ToRole="ESPECIALIDAD_DOCTOR" />
+        </EntityType>
+        <EntityType Name="ESPECIALIDAD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ESPECIALIDAD_DOCTOR" Relationship="Self.FK_EspecialidadDoctor" FromRole="ESPECIALIDAD" ToRole="ESPECIALIDAD_DOCTOR" />
+        </EntityType>
+        <EntityType Name="ESPECIALIDAD_DOCTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idEspecialidad" Type="Int32" Nullable="false" />
+          <Property Name="idDoctor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DOCTOR" Relationship="Self.FK_DoctorEspecialidad" FromRole="ESPECIALIDAD_DOCTOR" ToRole="DOCTOR" />
+          <NavigationProperty Name="ESPECIALIDAD" Relationship="Self.FK_EspecialidadDoctor" FromRole="ESPECIALIDAD_DOCTOR" ToRole="ESPECIALIDAD" />
+        </EntityType>
+        <EntityType Name="PACIENTE">
+          <Key>
+            <PropertyRef Name="dpi" />
+          </Key>
+          <Property Name="dpi" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CITA" Relationship="Self.FK_CitaPaciente" FromRole="PACIENTE" ToRole="CITA" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CitaDoctor">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+          <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="dpi" />
+            </Principal>
+            <Dependent Role="CITA">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitaPaciente">
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+          <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACIENTE">
+              <PropertyRef Name="dpi" />
+            </Principal>
+            <Dependent Role="CITA">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorEspecialidad">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+          <End Role="ESPECIALIDAD_DOCTOR" Type="Self.ESPECIALIDAD_DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="dpi" />
+            </Principal>
+            <Dependent Role="ESPECIALIDAD_DOCTOR">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspecialidadDoctor">
+          <End Role="ESPECIALIDAD" Type="Self.ESPECIALIDAD" Multiplicity="1" />
+          <End Role="ESPECIALIDAD_DOCTOR" Type="Self.ESPECIALIDAD_DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESPECIALIDAD">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ESPECIALIDAD_DOCTOR">
+              <PropertyRef Name="idEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataBase" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CITA" EntityType="Self.CITA" />
+          <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" />
+          <EntitySet Name="ESPECIALIDAD" EntityType="Self.ESPECIALIDAD" />
+          <EntitySet Name="ESPECIALIDAD_DOCTOR" EntityType="Self.ESPECIALIDAD_DOCTOR" />
+          <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_CitaDoctor" Association="Self.FK_CitaDoctor">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="CITA" EntitySet="CITA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitaPaciente" Association="Self.FK_CitaPaciente">
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+            <End Role="CITA" EntitySet="CITA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorEspecialidad" Association="Self.FK_DoctorEspecialidad">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="ESPECIALIDAD_DOCTOR" EntitySet="ESPECIALIDAD_DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspecialidadDoctor" Association="Self.FK_EspecialidadDoctor">
+            <End Role="ESPECIALIDAD" EntitySet="ESPECIALIDAD" />
+            <End Role="ESPECIALIDAD_DOCTOR" EntitySet="ESPECIALIDAD_DOCTOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HOSPITAL_DATOSModelStoreContainer" CdmEntityContainer="DataBase">
+          <EntitySetMapping Name="CITA">
+            <EntityTypeMapping TypeName="HOSPITAL_DATOSModel.CITA">
+              <MappingFragment StoreEntitySet="CITA">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="motivoCita" ColumnName="motivoCita" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCTOR">
+            <EntityTypeMapping TypeName="HOSPITAL_DATOSModel.DOCTOR">
+              <MappingFragment StoreEntitySet="DOCTOR">
+                <ScalarProperty Name="dpi" ColumnName="dpi" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESPECIALIDAD">
+            <EntityTypeMapping TypeName="HOSPITAL_DATOSModel.ESPECIALIDAD">
+              <MappingFragment StoreEntitySet="ESPECIALIDAD">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESPECIALIDAD_DOCTOR">
+            <EntityTypeMapping TypeName="HOSPITAL_DATOSModel.ESPECIALIDAD_DOCTOR">
+              <MappingFragment StoreEntitySet="ESPECIALIDAD_DOCTOR">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+                <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACIENTE">
+            <EntityTypeMapping TypeName="HOSPITAL_DATOSModel.PACIENTE">
+              <MappingFragment StoreEntitySet="PACIENTE">
+                <ScalarProperty Name="dpi" ColumnName="dpi" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HOSPITAL_DATOSModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
