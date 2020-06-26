@@ -128,12 +128,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CITAsController.cs" />
     <Compile Include="Controllers\DOCTORsController.cs" />
-    <Compile Include="Controllers\ESPECIALIDADsController.cs" />
     <Compile Include="Controllers\ESPECIALIDAD_DOCTORController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PACIENTEsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,32 +221,17 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\CITAs\Create.cshtml" />
-    <Content Include="Views\CITAs\Delete.cshtml" />
-    <Content Include="Views\CITAs\Details.cshtml" />
-    <Content Include="Views\CITAs\Edit.cshtml" />
-    <Content Include="Views\CITAs\Index.cshtml" />
     <Content Include="Views\DOCTORs\Create.cshtml" />
     <Content Include="Views\DOCTORs\Delete.cshtml" />
-    <Content Include="Views\DOCTORs\Details.cshtml" />
     <Content Include="Views\DOCTORs\Edit.cshtml" />
     <Content Include="Views\DOCTORs\Index.cshtml" />
-    <Content Include="Views\ESPECIALIDADs\Create.cshtml" />
-    <Content Include="Views\ESPECIALIDADs\Delete.cshtml" />
-    <Content Include="Views\ESPECIALIDADs\Details.cshtml" />
-    <Content Include="Views\ESPECIALIDADs\Edit.cshtml" />
-    <Content Include="Views\ESPECIALIDADs\Index.cshtml" />
+    <Content Include="Views\DOCTORs\Especialidad.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Create.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Delete.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Details.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Edit.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Index.cshtml" />
-    <Content Include="Views\PACIENTEs\Create.cshtml" />
-    <Content Include="Views\PACIENTEs\Delete.cshtml" />
-    <Content Include="Views\PACIENTEs\Details.cshtml" />
-    <Content Include="Views\PACIENTEs\Edit.cshtml" />
-    <Content Include="Views\PACIENTEs\Index.cshtml" />
-    <Content Include="Views\DOCTORs\Especialidad.cshtml" />
+    <Content Include="Views\ESPECIALIDAD_DOCTOR\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,8 +20,10 @@ namespace Practica2.Controllers
             return View(db.DOCTOR);
         }
 
-        public ActionResult Especialidad(int? id)
+        public ActionResult Especialidad(long? id)
         {
+            
+
             var eSPECIALIDAD_DOCTOR = db.ESPECIALIDAD_DOCTOR.Include(e => e.DOCTOR).Include(e => e.ESPECIALIDAD).Where(
                 e => e.idDoctor == id);
             return View(eSPECIALIDAD_DOCTOR.ToList());
@@ -60,7 +62,7 @@ namespace Practica2.Controllers
             {
                 db.DOCTOR.Add(dOCTOR);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "ESPECIALIDAD_DOCTOR", dOCTOR.dpi);
             }
 
             return View(dOCTOR);

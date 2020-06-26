@@ -37,11 +37,22 @@ namespace Practica2.Controllers
         }
 
         // GET: ESPECIALIDAD_DOCTOR/Create
-        public ActionResult Create()
+        public ActionResult Create(long? id, string mensaje = "")
         {
-            ViewBag.idDoctor = new SelectList(db.DOCTOR, "dpi", "nombre");
-            ViewBag.idEspecialidad = new SelectList(db.ESPECIALIDAD, "id", "nombre");
+            //agregar msj de creado exitosamente
+            ViewBag.Message = mensaje;
+            ViewBag.idDoctor = ObtenerListado(id.ToString());
+            ViewBag.idEspecialidad= new SelectList(db.ESPECIALIDAD, "id", "nombre");
             return View();
+        }
+
+        public List<SelectListItem> ObtenerListado(string id) {
+            return new List<SelectListItem>() {
+            new SelectListItem(){
+            Text = id,
+            Value = id
+            }
+            };
         }
 
         // POST: ESPECIALIDAD_DOCTOR/Create
@@ -55,10 +66,10 @@ namespace Practica2.Controllers
             {
                 db.ESPECIALIDAD_DOCTOR.Add(eSPECIALIDAD_DOCTOR);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create",new{id = eSPECIALIDAD_DOCTOR.idDoctor , mensaje ="Registro de Especialidad y Doctor Exitoso"});
             }
 
-            ViewBag.idDoctor = new SelectList(db.DOCTOR, "dpi", "nombre", eSPECIALIDAD_DOCTOR.idDoctor);
+            ViewBag.idDoctor = eSPECIALIDAD_DOCTOR.idDoctor;
             ViewBag.idEspecialidad = new SelectList(db.ESPECIALIDAD, "id", "nombre", eSPECIALIDAD_DOCTOR.idEspecialidad);
             return View(eSPECIALIDAD_DOCTOR);
         }
