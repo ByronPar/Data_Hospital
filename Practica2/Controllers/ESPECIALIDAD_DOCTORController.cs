@@ -37,20 +37,20 @@ namespace Practica2.Controllers
         }
 
         // GET: ESPECIALIDAD_DOCTOR/Create
-        public ActionResult Create(long? id, string mensaje = "")
+        public ActionResult Create(long? dpi, string mensaje="")
         {
-            //agregar msj de creado exitosamente
             ViewBag.Message = mensaje;
-            ViewBag.idDoctor = ObtenerListado(id.ToString());
-            ViewBag.idEspecialidad= new SelectList(db.ESPECIALIDAD, "id", "nombre");
+            ViewBag.idDoctor = ObtenerListado(dpi);
+            ViewBag.idEspecialidad = new SelectList(db.ESPECIALIDAD, "id", "nombre");
             return View();
         }
 
-        public List<SelectListItem> ObtenerListado(string id) {
+        public List<SelectListItem> ObtenerListado(long? dpi)
+        {
             return new List<SelectListItem>() {
             new SelectListItem(){
-            Text = id,
-            Value = id
+            Text = dpi.ToString(),
+            Value = dpi.ToString()
             }
             };
         }
@@ -66,10 +66,11 @@ namespace Practica2.Controllers
             {
                 db.ESPECIALIDAD_DOCTOR.Add(eSPECIALIDAD_DOCTOR);
                 db.SaveChanges();
-                return RedirectToAction("Create",new{id = eSPECIALIDAD_DOCTOR.idDoctor , mensaje ="Registro de Especialidad y Doctor Exitoso"});
+                long? enviar = eSPECIALIDAD_DOCTOR.idDoctor;
+                return RedirectToAction("Create","ESPECIALIDAD_DOCTOR",new {dpi = enviar,mensaje = "Asignación de Especialidad Exitosa" });
             }
 
-            ViewBag.idDoctor = eSPECIALIDAD_DOCTOR.idDoctor;
+            ViewBag.idDoctor = new SelectList(db.DOCTOR, "dpi", "nombre", eSPECIALIDAD_DOCTOR.idDoctor);
             ViewBag.idEspecialidad = new SelectList(db.ESPECIALIDAD, "id", "nombre", eSPECIALIDAD_DOCTOR.idEspecialidad);
             return View(eSPECIALIDAD_DOCTOR);
         }

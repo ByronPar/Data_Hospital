@@ -62,7 +62,8 @@ namespace Practica2.Controllers
             {
                 db.DOCTOR.Add(dOCTOR);
                 db.SaveChanges();
-                return RedirectToAction("Create", "ESPECIALIDAD_DOCTOR", dOCTOR.dpi);
+                long? enviar = dOCTOR.dpi;
+                return RedirectToAction("Create", "ESPECIALIDAD_DOCTOR", new { dpi = enviar});
             }
 
             return View(dOCTOR);

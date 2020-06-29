@@ -221,17 +221,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\DOCTORs\Create.cshtml" />
     <Content Include="Views\DOCTORs\Delete.cshtml" />
     <Content Include="Views\DOCTORs\Edit.cshtml" />
     <Content Include="Views\DOCTORs\Index.cshtml" />
     <Content Include="Views\DOCTORs\Especialidad.cshtml" />
+    <Content Include="Views\DOCTORs\Create.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Create.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Delete.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Details.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Edit.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Index.cshtml" />
-    <Content Include="Views\ESPECIALIDAD_DOCTOR\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
