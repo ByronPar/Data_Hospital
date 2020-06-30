@@ -131,6 +131,7 @@
     <Compile Include="Controllers\DOCTORsController.cs" />
     <Compile Include="Controllers\ESPECIALIDAD_DOCTORController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PACIENTEsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +233,11 @@
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Edit.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Index.cshtml" />
     <Content Include="Views\DOCTORs\ListadoEspecialidad.cshtml" />
+    <Content Include="Views\PACIENTEs\Create.cshtml" />
+    <Content Include="Views\PACIENTEs\Delete.cshtml" />
+    <Content Include="Views\PACIENTEs\Details.cshtml" />
+    <Content Include="Views\PACIENTEs\Edit.cshtml" />
+    <Content Include="Views\PACIENTEs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
