@@ -5,54 +5,55 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Registro de Citas Programadas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar Nueva Cita", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha)
+            No. de Cita
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.motivoCita)
+            Fecha de Cita
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.costo)
+            Motivo de Cita
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DOCTOR.nombre)
+            Costo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PACIENTE.nombre)
+            Nombre Doctor
+        </th>
+        <th>
+            Nombre Paciente
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.motivoCita)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DOCTOR.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PACIENTE.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fecha)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.motivoCita)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.costo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DOCTOR.nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PACIENTE.nombre)  @Html.DisplayFor(modelItem => item.PACIENTE.apellido)
+    </td>
+</tr>
 }
 
 </table>
