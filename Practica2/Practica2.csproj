@@ -231,6 +231,7 @@
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Details.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Edit.cshtml" />
     <Content Include="Views\ESPECIALIDAD_DOCTOR\Index.cshtml" />
+    <Content Include="Views\DOCTORs\ListadoEspecialidad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

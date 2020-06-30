@@ -14,6 +14,29 @@ namespace Practica2.Controllers
     {
         private DataBase db = new DataBase();
 
+
+
+        [HttpPost]
+        public ActionResult ListadoEspecialidad(string idEspecialidad) {
+            long? idEspecial = Convert.ToInt64(idEspecialidad);
+            var especialidades = db.ESPECIALIDAD_DOCTOR.Where(e => e.idEspecialidad == idEspecial);
+            List<DOCTOR> lista = new List<DOCTOR>();
+            ViewBag.idEspecialidad = new SelectList(db.ESPECIALIDAD, "id", "nombre");
+            foreach (ESPECIALIDAD_DOCTOR item in especialidades)
+            {
+                var agregar = db.DOCTOR.Find(item.idDoctor);
+                lista.Add(agregar);
+            }
+            return View(lista.ToList());
+        }
+
+        public ActionResult ListadoEspecialidad()
+        {
+            var doc = db.DOCTOR.Where(e => e.dpi == 99999999999999999);
+            ViewBag.idEspecialidad = new SelectList(db.ESPECIALIDAD, "id", "nombre");
+            return View(doc.ToList());
+        }
+
         // GET: DOCTORs
         public ActionResult Index()
         {

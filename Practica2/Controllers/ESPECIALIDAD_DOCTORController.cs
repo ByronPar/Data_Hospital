@@ -14,6 +14,9 @@ namespace Practica2.Controllers
     {
         private DataBase db = new DataBase();
 
+
+        
+
         // GET: ESPECIALIDAD_DOCTOR
         public ActionResult Index()
         {
