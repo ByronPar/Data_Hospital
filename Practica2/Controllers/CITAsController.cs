@@ -21,6 +21,65 @@ namespace Practica2.Controllers
             return View(cITA.ToList());
         }
 
+        // GET: CITAs
+        public ActionResult bonoAlto()
+        {
+            long? dpi = 0;
+            float bonoMasAlto = 0;
+            float bonoDoctor = 0;
+            var cita = db.CITA.Include(c => c.DOCTOR).Include(c => c.PACIENTE);
+            foreach (CITA item in cita)
+            {
+                bonoDoctor = 0;
+                var doc = db.DOCTOR.Find(item.idDoctor);
+                bonoDoctor = doc.sueldo;
+                foreach (CITA item2 in cita)
+                {
+                    if (item2.idDoctor ==item.idDoctor)
+                    {
+                        bonoDoctor += 100;
+                    }
+
+                }
+                if (bonoDoctor > bonoMasAlto)
+                {
+                    bonoMasAlto = bonoDoctor;
+                    dpi = item.idDoctor;
+                }
+
+            }
+
+            return RedirectToAction("reporte1", "REPORTE", new { dpi, bonoMasAlto });
+        }
+
+        public ActionResult pacienteCitasMayor()
+        {
+            long? dpi = 0;
+            int? cantidadCitas = 0;
+            int? mayorCitas = 0;
+            var cita = db.CITA.Include(c => c.DOCTOR).Include(c => c.PACIENTE);
+            foreach (CITA item in cita)
+            {
+                cantidadCitas = 0;
+                foreach (CITA item2 in cita)
+                {
+                    if (item2.idPaciente == item.idPaciente)
+                    {
+                        cantidadCitas += 1;
+                    }
+
+                }
+                if (cantidadCitas > mayorCitas)
+                {
+                    mayorCitas = cantidadCitas;
+                    dpi = item.idPaciente;
+                }
+
+            }
+
+            return RedirectToAction("reporte2", "REPORTE", new { dpi, mayorCitas });
+        }
+
         // GET: CITAs/Details/5
         public ActionResult Details(int? id)
         {
