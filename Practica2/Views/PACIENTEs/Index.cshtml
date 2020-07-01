@@ -49,6 +49,10 @@
     <td>
         @Html.DisplayFor(modelItem => item.fechaRegistro)
     </td>
+    <td>
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.dpi })
+    </td>
+    
 </tr>
 }
 

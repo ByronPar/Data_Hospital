@@ -1,0 +1,65 @@
+﻿@model Practica2.Models.DOCTOR
+
+@{
+    ViewBag.Title = "reporte1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>reporte1 - Doctor con más bono acumulado </h2>
+
+<div>
+    <h4>DOCTOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            DPI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dpi)
+        </dd>
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Dirección
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            Telefono
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            Puesto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puesto)
+        </dd>
+
+        <dt>
+            Bono Acumulado
+        </dt>
+
+        <dd>
+            @ViewBag.bonoTotal
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar a lista de Reportes", "Index")
+</p>

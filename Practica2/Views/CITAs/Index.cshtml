@@ -53,6 +53,9 @@
     <td>
         @Html.DisplayFor(modelItem => item.PACIENTE.nombre)  @Html.DisplayFor(modelItem => item.PACIENTE.apellido)
     </td>
+    <td>
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.id})
+    </td>
 </tr>
 }
 

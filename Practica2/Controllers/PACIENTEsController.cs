@@ -52,7 +52,7 @@ namespace Practica2.Controllers
             {
                 db.PACIENTE.Add(pACIENTE);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             return View(pACIENTE);

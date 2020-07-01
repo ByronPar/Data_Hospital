@@ -8,21 +8,23 @@
 <h2>Registrar Nueva Cita</h2>
 
 <hr />
-<form action="">
-    <h5>Puede Registrar un nuevo paciente si lo desea</h5>
-    <button type="button" class="btn btn-primary">Registrar Paciente</button>
-</form>
+<h4>Puede registrar un nuevo paciente si lo desea:</h4>
+<div>
+    @Html.ActionLink("Registrar Paciente", "Create", "PACIENTEs",null, htmlAttributes: new { @class = "btn btn-primary" })
+</div>
+
+
 <hr />
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.idPaciente, "Nombre Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
-             
+
             <div class="col-md-10">
                 @Html.DropDownList("idPaciente", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idPaciente, "", new { @class = "text-danger" })
@@ -63,7 +65,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Registrar Cita" class="btn btn-success" />
             </div>
         </div>
     </div>
